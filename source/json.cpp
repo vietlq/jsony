@@ -78,9 +78,9 @@ struct json_grammar : qi::grammar<Iterator, ascii::space_type>
         // 
         js_key = (alpha >> *alnum) | js_string;
         // 
-        js_single_quoted_str = lexeme["'" >> *(~char_("\\'") | ("\\" >> char_("'"))) >> "'"];
+        js_single_quoted_str = lexeme["'" >> *(("\\" >> ~char_("'")) | ~char_("\\'") | ("\\" >> char_("'"))) >> "'"];
         // 
-        js_double_quoted_str = lexeme['"' >> *(~char_("\\\"") | ("\\" >> char_("\""))) >> '"'];
+        js_double_quoted_str = lexeme['"' >> *(("\\" >> ~char_('"')) | ~char_("\\\"") | ("\\" >> char_("\""))) >> '"'];
         // 
         js_string = js_single_quoted_str | js_double_quoted_str;
     }
