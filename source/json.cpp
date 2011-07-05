@@ -23,7 +23,6 @@ namespace qi = boost::spirit::qi;
 namespace ascii = boost::spirit::ascii;
 namespace phoenix = boost::phoenix;
 
-#include "JsonValue.h"
 #include "JsonVariant.h"
 #include "SemanticAction.h"
 
